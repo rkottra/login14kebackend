@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 
 use Illuminate\Http\Request;
-Route::post('/token/create', function (Request $request) {
+
+/*Route::post('/token/create', function (Request $request) {
     $token = $request->user()->createToken($request->token_name);
  
     return ['token' => $token->plainTextToken];
@@ -50,4 +51,13 @@ Route::post('/api/login', function (Request $request) {
         return abort(400,"hiba");
     }
 
-});
+});*/
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FontosController;
+
+Route::post('api/login', [UserController::class, "login"]);
+Route::post('api/check', [UserController::class, "check"]);
+Route::post('api/logout', [UserController::class, "logout"]);
+
+Route::post('api/fontos', [FontosController::class, "fontos"]);
